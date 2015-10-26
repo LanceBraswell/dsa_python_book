@@ -20,9 +20,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # WARNING: this is a terribly inefficient algorithm
+
+
 def unique3(S, start, stop):
-  """Return True if there are no duplicate elements in slice S[start:stop]."""
-  if stop - start <= 1: return True                # at most one item
-  elif not unique(S, start, stop-1): return False  # first part has duplicate
-  elif not unique(S, start+1, stop): return False  # second part has duplicate
-  else: return S[start] != S[stop-1]               # do first and last differ?
+    """Return True if there are no duplicate elements in slice S[start:stop]."""
+    if stop - start <= 1:
+        return True                # at most one item
+    elif not unique(S, start, stop - 1):
+        return False  # first part has duplicate
+    elif not unique(S, start + 1, stop):
+        return False  # second part has duplicate
+    else:
+        # do first and last differ?
+        return S[start] != S[stop - 1]
